@@ -1,0 +1,49 @@
+<div>
+    <h2>Component - Component binding</h2>
+
+    <h4>Parent to Child</h4>
+    <p>Data1 to child component: {{ dataToChild }}</p>
+    <p>Data2 to child component: {{ dataToChild2 }}</p>
+    <app-child [inputValue]="dataToChild" [inputValue2]="dataToChild2"></app-child>
+
+    <hr>
+
+    <h4>Child to Parent</h4>
+    <p *ngIf="showParagraph">--this is a new paragraph to hide--</p>
+    <p> [2] emit onButtonClick event => Invoke onChildClick() function, which returns (toggle) boolean showParagraph: {{
+        showParagraph }} </p>
+
+    <app-child2 (onButtonClick)="onChildClick()"></app-child2>
+
+    <hr>
+
+    <h2>Component - Service </h2>
+    <h4>Binding Component Child-E data to Connector Service</h4>
+    <app-child-e></app-child-e>
+
+    <hr>
+
+    <h2>Component - Service - Component (with Observable)</h2>
+    <h4>Component Child-A communicate with Component Child-B via Connector Service</h4>
+    <ul>
+        <li>READ_ONLY: obtain Observable object</li>
+        <li>WRITE: using Service methods</li>
+    </ul>
+    <app-child-a></app-child-a>
+    <app-child-a></app-child-a>
+    <app-child-b></app-child-b>
+
+    <hr>
+
+    <h2>Component - Service - Component (with Subject)</h2>
+    <h4>Component Child-C communicate with Component Child-D via Connector Service</h4>
+    <ul>
+        <li>READ: obtain Subject object</li>
+        <li>WRITE: using Subject directly (next method)</li>
+    </ul>
+    <app-child-c></app-child-c>
+    <app-child-d></app-child-d>
+
+    <hr>
+
+</div>

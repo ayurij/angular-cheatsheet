@@ -1,0 +1,48 @@
+<div>
+    <h2>Component - Template binding</h2>
+
+    <h4>Binding Component data to Template</h4>
+    <p>interpolation in paragraph: {{ dataToDisplay }}</p>
+    <p>pre filled input value: <input type="text" [value]="dataToDisplay"></p>
+
+    <hr>
+
+    <h4>Binding Template event (input keyup event) to Component function</h4>
+    <p>input value: {{ inputText }}</p>
+    <p>set/change value: <input type="text" (keyup)="onKeyUp($event)"></p>
+
+    <hr>
+
+    <h4>Binding Template event (button click event) to Component function</h4>
+    <p *ngIf="showParagraph">--this is a new paragraph to hide--</p>
+    <p>onClick() function returns (toggle) boolean showParagraph: {{ showParagraph }}</p>
+    <button (click)="onClick()">Invoke onClick() function</button>
+
+    <hr>
+
+    <h4>Two-way Binding</h4>
+    <p>input value: {{ inputText2 }}</p>
+    <p>set/change value: <input type="text" [(ngModel)]="inputText2"></p>
+
+    <hr>
+
+    <h4>
+        Binding Template event (button click event) to Component function<br>
+        Binding Template data (input value) to Component
+    </h4>
+    <p>textStorage value: {{ textStorage }}</p>
+    <input type="text" [(ngModel)]="inputText3">
+    <button (click)="onClick2()">Give a new value! Invoke onClick2() function</button>
+
+    <hr>
+
+    <h4>
+        Binding Template event (button click event) to Component function<br>
+        Binding Template data (input value) to Component
+    </h4>
+    <p>numberAccumulator value: {{ numberAccumulator }}</p>
+    <input type="number" [(ngModel)]="inputNumber">
+    <button (click)="onClick3()"> Add more! Invoke onClick3() function</button>
+
+    <hr>
+</div>
