@@ -1,1 +1,81 @@
-<p>forms works!</p>
+<div>
+    <h2>Template-Driven Forms</h2>
+    <h4>
+        Apply ngModel directive to elements
+    </h4>
+    <p>textStorageA value: {{ textStorageA }}</p>
+    <p>name="first_input" #templateVariable="ngModel" => onClick(templateVariable: ngModel) => ngModel.model, ngModel.name</p>
+    <div>
+        <input type="text" name="first_input" ngModel #templateVariable="ngModel">
+        <button (click)="onClick(templateVariable)">Give a new value from the first_input! Invoke onClick() function</button>
+    </div>
+    <p>name="second_input" #templateVariable2="ngModel" => onClick(templateVariable2: ngModel) => ngModel.model, ngModel.name</p>
+    <div>
+        <input type="text" name="second_input" ngModel #templateVariable2="ngModel">
+        <button (click)="onClick(templateVariable2)">Give a new value from the second_input! Invoke onClick() function</button>
+    </div>
+
+    <hr>
+
+    <h4>
+        Apply ngModel to elements; additional properties
+    </h4>
+    <p>textStorageB value: {{ textStorageB }}</p>
+    <p>name="third_input" #templateVariable3="ngModel"</p>
+    <p>template booleans (templateVariable3.valid, templateVariable3.untouched) used to constract template-side logic.</p>
+    <p>css: input.ng-touched.ng-invalid, input.ng-touched.ng-valid</p>
+    <div>
+        <input type="text" name="third_input" ngModel #templateVariable3="ngModel" required>
+        <button [disabled]="!templateVariable3.valid" (click)="onClick2(templateVariable3)">Give a new value! Invoke onClick2() function</button>
+        <div [hidden]="templateVariable3.valid||templateVariable3.untouched">Insert text!</div>
+    </div>
+
+    <hr>
+
+    <h4>Apply ngForm directive</h4>
+
+    <p>textStorageC value: {{ textStorageC }}</p>
+    <form #myForm="ngForm" novalidate autocomplete="off">
+        <input type="text" name="fourth_input" ngModel required>
+        <button [disabled]="!myForm.valid" (click)="onClick3(myForm)">Give a new value! Invoke onClick3() function</button>
+        <div [hidden]="myForm.valid||myForm.untouched">Insert text!</div>
+    </form>
+
+    <hr>
+
+    <h4>Apply ngForm directive, ngSubmit event </h4>
+
+    <p>textStorageC value: {{ textStorageC }}</p>
+    <form #myForm2="ngForm" (ngSubmit)="onClick3(myForm2)" novalidate autocomplete="off">
+        <input type="text" name="fourth_input" ngModel required>
+        <button type="submit" [disabled]="!myForm2.valid">Submit a new value!</button>
+        <div [hidden]="myForm2.valid||myForm2.untouched">Insert text!</div>
+    </form>
+
+    <hr>
+
+    <h2>Reactive Forms</h2>
+
+    <h4>Created by FormBuilder</h4>
+
+    <p>textStorageD value: {{ textStorageD }}</p>
+    <form [formGroup]="formGroup" (ngSubmit)="onClick4()" novalidate autocomplete="off">
+        <input type="text" formControlName="textInput">
+        <button type="submit" [disabled]="disableButton">Submit a new value! Reset form</button>
+        <div [hidden]="!showErrorMessage">Insert text!</div>
+    </form>
+
+    <hr>
+
+    <h4>Created without FormBuilder</h4>
+
+    <p>textStorageD value: {{ textStorageE }}</p>
+    <form [formGroup]="myFormGroup" (ngSubmit)="onClick5()" novalidate autocomplete="off">
+        <input type="text" formControlName="inputControl">
+        <button type="submit" [disabled]="disableButton2">Submit a new value! Reset form</button>
+        <div [hidden]="!showErrorMessage2">Insert text!</div>
+    </form>
+
+    <hr>
+
+</div>
